@@ -1,0 +1,14 @@
+IC1 - Attiny85 IC, 8mhz. Chosen over the Atmega385 for simplicity and cost factors, alsp the 85 seems to be more versatile in terms of power input.
+
+J2 is for ISP cable
+
+The moisture sensor provides an analog signal analog IN pin 2
+The tank water level sensor is two wires, in the water tank. Water provides resistance change. The signal is pulled LOW via R1. D4 protects from reverse current from Pin 3 (which switches between input/output mode)
+
+The piezo and LED2 act as the only output interface, providing a sound when the water tank is empty.
+
+R2 is a potentiometer which controls the amount of water pumped on every pump cycle.
+Q2 gives power to all three sensors. The sensors are normally OFF to conserve power and only switched on when measurements are needed.
+Q1 controls the motor. D2 protects the tank water sensor and Pin 3 from reverse current when S1 is used to power the motor manually. The motor is activated by pin 3, which switches from input to output for that time only.
+S1 is manual control for the motor.
+D3 protects from a reverse power surge when the motor turns off.
