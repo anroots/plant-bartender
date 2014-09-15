@@ -7,16 +7,23 @@ void serveSomeWater() {
   }
 
   if (!isWateringPermitted()) {
-    Serial.println("I am not allowed to water right now");
     return;
   }
+  
+  notifyPumpStart();
+  activatePump(getPumpDuration());
+}
 
-  activatePump(2000);
+unsigned int getPumpDuration() {
 
-  Serial.println("Serving some water...");
-
+  unsigned int moistureBonus = (500-measuredSoilHumidity)*5;
+  
+  return defaultPumpDuration + moistureBonus;
 }
 
 void activatePump(unsigned int duration) {
-
+  digitalWrite(pumpPowerPin, HIGH);
+  delay(duration);
+  digitalWrite(pumpPowerPin, LOW);
+  pumpLastActive = millis();
 }

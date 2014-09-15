@@ -11,7 +11,7 @@ boolean isSoilTooDry() {
 
 
 boolean isWateringPermitted() {
-
-  return true;
-
+  unsigned int timeSinceLastRun = (int)abs(millis() - pumpLastActive);
+  
+  return timeSinceLastRun >= minMinutesBetweenPumps*60000;
 }

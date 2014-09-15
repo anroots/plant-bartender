@@ -18,7 +18,7 @@ unsigned int takeAnalogReading(byte sensorPin, byte delayTime = 50) {
 
 void takeMeasurments() {
   powerOnSensors();
-  delay(2000);
+  delay(500);
   measuredSoilHumidity = getSoilHumidity();
   measuredReservoirReading = getWaterReservoirReading();
 
